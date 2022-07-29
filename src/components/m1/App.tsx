@@ -8,11 +8,11 @@ interface TableProps {
     renderItems: (item: {
         id: string;
         firstName: string;
-    }) => any
+    }) => React.ReactNode
 }
 
 export const Table = (props: TableProps) => {
-    return ''
+    return <>Hi</>
 }
 
 export const Component = () => {
@@ -28,11 +28,24 @@ export const Component = () => {
 
 
 //** Solution
+interface TableProps2<anyItem> {
+    items: anyItem[];
+    renderItems: (item: anyItem) => React.ReactNode
+}
 
-interface TableProps2<Titem> {
-    items: {id:string; firstName: string}[];
-    renderItems: (item: {
-        id: string;
-        firstName: string;
-    }) => any
+// without the ,(comma) after the anyItem, typeScript would trow an error, also you can call anyItem any names you want e.g you can change the name to box and there would be no errors
+export const Table2 = <anyItem,>(props: TableProps2<anyItem>) => {
+    return <>Hi</>
+}
+
+// so now, if you hover over the each of dts argument passed into the renderItems functions, you'll see that dts has all the values of whatever the items object received
+export const Component2 = () => {
+    return (
+        <>
+            <Table2
+                items={[{id:'1', firstName:'stanley'}]}
+                renderItems={(dts) => {return null}}
+            ></Table2>
+        </>
+    )
 }
