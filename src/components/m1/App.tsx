@@ -39,11 +39,16 @@ export const Table2 = <anyItem,>(props: TableProps2<anyItem>) => {
 }
 
 // so now, if you hover over the each of dts argument passed into the renderItems functions, you'll see that dts has all the values of whatever the items object received
+// so now, we can have a table for our users, our pets, our foodstuff and e.t.c
 export const Component2 = () => {
     return (
         <>
             <Table2
-                items={[{id:'1', firstName:'stanley'}]}
+                items={[{id:'1', firstName:'stanley'}, {id:'1', firstName:'claudio'}]}
+                renderItems={(dts) => {return null}}
+            ></Table2>
+            <Table2
+                items={[{id:'1', name:'justin', type:'pet'}, {id:'1', name:'lucy', type:'pet'}]}
                 renderItems={(dts) => {return null}}
             ></Table2>
         </>
