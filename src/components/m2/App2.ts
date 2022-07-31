@@ -65,3 +65,21 @@ so this all about using some extensions provided by typescript to solve some com
 when we are not sure of what the keys and values of this object would be..
 you can also do --TObj extends object-- just to be sure that TObj is always an object
 */
+
+
+
+// another small example of using of keyOff
+interface Letters {
+    a: string;
+    b: string;
+    c: string;
+}
+
+export type LettersAsUnion = keyof Letters;
+
+// the below can only be either 'a', 'b', or 'c'
+// LettersAsUnion could also be = 'a' | 'b' | 'c'
+export const letter: LettersAsUnion = 'a'
+
+// but letter2 cannot be 'a', 'b', or 'c', because it is not a keyof Letters
+export const letter2: Letters = {'a':'me', 'b':'me', 'c':'me'}
