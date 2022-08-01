@@ -1,7 +1,7 @@
 /**
 this example is all about using of generics
-in the TableProps, items is an object that is limited to {id:string; firstName: string}, but we can use generics to make items an array of multi-dimensional object
-where items can any type of objects within it's array ... see solution
+in the TableProps, items is an object that is limited to an array that contains only {id:string; firstName: string}, but we can use generics to make items an array of 
+multi-dimensional objects, where items can be any type of objects within it's array ... see solution
 */
 interface TableProps {
     items: {id:string; firstName: string}[];

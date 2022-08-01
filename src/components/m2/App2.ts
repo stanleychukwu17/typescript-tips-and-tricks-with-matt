@@ -1,5 +1,5 @@
 /**
-So the problem here is that we have this function below, we want the function to be able to access  deeper into any objects passed to
+So the problem here is that we have this function below, we want the function to be able to access deeper into any objects passed to
 it as an argument, but the thing is that we want the object key and values to be dynamic, we do not want fixed object keys and values.
 so here is the problem below:
 */
@@ -21,7 +21,7 @@ console.log(value)
 
 
 /**
-solution 1: So generics to the rescue this problem, un-comment the return lines to see errors
+solution 1: So generics to the rescue of this problem, un-comment the return lines to see errors
 */
 export const getDeepValue_1 = <TObj>(obj:TObj, firstKey:string, secondKey:string) => {
     // return obj[firstKey][secondKey]
