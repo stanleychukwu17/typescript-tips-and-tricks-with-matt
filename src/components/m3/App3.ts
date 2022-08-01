@@ -1,17 +1,18 @@
 /**
-Summary: shows us how to work with typescript when fetch and when working with API'S
-On this section - when we fetch data from api, how do we control types of data returned.. in so many cases, we have an idea of what the
-data we're expecting from an API would look like. 
+Summary: shows us how to work with typescript when fetching data from an API and we want to make sure that the data returned from the API is well typed
+In so many cases, we have an idea of what the data we're expecting from an API would look like. so let's use zod to solve this issue
 we can install a package called zod as i have done for this lecture
 */
 
 import {z} from 'zod'
 
+// the data structure we're expecting from the API
 const Data = z.object({
     id: z.string(),
     name: z.string()
 })
 
+// export the data type, just in case we wanted to use it in other projects, also <typeof > is a function in typescript that returns the type of an object, component, function e.t.c
 export type DataType = z.infer<typeof Data>
 
 fetch('/someApi')
@@ -26,7 +27,6 @@ fetch('/someApi')
 
 
 // we can also do the above like :
-
 interface DataFromApi {
     id: string;
     name: string;
