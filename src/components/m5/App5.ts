@@ -17,7 +17,7 @@ solution 1
 we can use if else in typescript to make sure that the arguments are not arrays
 */
 export const deepEqualCompare_1 = <Arg>(
-    a: Arg extends any[] ? `Don't pass an array!` : Arg, // i would love to do: 'a: Arg extends any[] ? never : Arg'
+    a: Arg extends any[] ? `Don't pass an array!` : Arg, // i would have loved to do: 'a: Arg extends any[] ? never : Arg'
     b: Arg
 ): boolean => {
     if (Array.isArray(a) || Array.isArray(b)) {
