@@ -19,7 +19,7 @@ fetch('/someApi')
     .then(res => res.json())
     .then(res => {
         /**
-            if you hover over the --data-- result, you will see that is now has the proper types, i.e --const data: {id: string; name: string; }--
+            if you hover over the --data-- result, you will see that it now has the proper types, i.e --const data: {id: string; name: string; }--
         */
         const data = Data.parse(res)
         console.log(data, data.id, data.name)        
