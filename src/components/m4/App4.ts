@@ -1,10 +1,11 @@
 /**
 this section is about how we can also do --if else statements-- with typescript
 so here is the problem:
-if the TType is an animal, let us return and object with keys and types representing an animal attributes, same goes for humans
+if the generic called 'TType' is an animal, let us return and object with keys and types representing an animal attributes, same goes for humans.
 */
 type Animal = {
     name: string
+    soundOfAnimal: string
 }
 
 type Human = {
@@ -100,12 +101,12 @@ type Human_1 = {
 // just take --GetRequiredInformation-- as a function and --TType-- is the argument
 type GetRequiredInformation_7<TType> = TType extends Animal_1
     ? Creator & Animal_1 & {'HasTail':boolean, 'Legs':number}
-    : Creator & Human_1 & {'color':'white'|'black', 'SocialSecurity':number, 'gender':string}
+    : Creator & Human_1 & {'color':'white'|'black', 'socialSecurity':number, 'gender':string}
 
 export type RequiredInformationForAnimal_7 = GetRequiredInformation_7<Animal_1>
 
 export type RequiredInformationForHuman_7 = GetRequiredInformation_7<Human_1>
 
 const cat:RequiredInformationForAnimal_7 = {'WHO':'GOD', name:'molly', Legs:4, HasTail:true};
-const student:RequiredInformationForHuman_7 = {'WHO':'GOD', firstName:'stanley', lastName:'chukwu', color:'black', gender:'male', SocialSecurity:40828048040};
+const student:RequiredInformationForHuman_7 = {'WHO':'GOD', firstName:'stanley', lastName:'chukwu', color:'black', gender:'male', socialSecurity:40828048040};
 console.log(cat, student);
