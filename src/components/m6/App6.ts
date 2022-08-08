@@ -1,3 +1,8 @@
+/**
+So the below topic is pretty advanced! using typescript to destructure the params from a request and turning the params into an object of keys and values,
+I had to install the ts-toolbelt for this lecture.. the ts-toolbelt is a library for typescript, it is just like lodash, it comes with so many functions
+that you can use on typescript types
+*/
 import {String, Union} from 'ts-toolbelt'
 
 export const query = `/home?a=foo&b=bow`
