@@ -63,8 +63,11 @@ export const getDeepValue_4 = <TObj, TFirstKey extends keyof TObj, TSecondKey ex
 so hopefully you understand what we've done here.. otherWise head over to the youtube video and watch the full video to see the teacher explain
 so this is all about using some extensions provided by typescript to solve some common problems.. in this case, how do we access an object
 when we are not sure of what the keys and values of this object would be.. generics to the rescue..
-Please note that --keyof-- is almost like a .map() function, but instead of returning an array, it loops through an object and returns the keys as a union
-you can also do --TObj extends object-- just to be sure that TObj is always an object
+Please note that --keyof-- is almost like a .map() function, but instead of returning an array, it loops through an object and returns the keys as a union.
+You can also do --TObj extends object-- just to be sure that TObj is always an object
+
+Explanation of 'TSecondKey extends keyof TObj[TFirstKey]':
+you know that 'TFirstKey' is a union of 'TObj', so doing TObj[TFirstKey] will cause automatically loop through the values of each object inside the 'TFirstKey'
 */
 
 
