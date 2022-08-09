@@ -18,7 +18,7 @@ type QueryParams = {
         [Key in String.Split<QueryElement, "=">[0]]:
             String.Split<QueryElement, "=">[1]
     }
-}[QueryElements[number]]
+}[QueryElements[number]] // try deleting this line '[QueryElements[number]]' and see what the result will look like (i.e QueryParams) - [QueryElements[number]]
 
 
 /**
@@ -27,11 +27,40 @@ QueryElements[number] this is like a function in typescript, because we passed i
 even if you do the same for objects, it will loop through the object key and values, but return only the values as a union, but use 'name_of_type[numbers]' mainly when your
 type is an array
 
-I stopped explaining this code since it is taking up a-lot of my time and i feel that this is an example of a simple problem that has been over engineered
+i was revising the code and decided to explain every line of the type QueryParams
+type QueryParams = {
+    [QueryElement in QueryElements[number]]: { // for each loop of 'QueryElements[number]', 'QueryElement' will be = "a=foo", "b=bow"
+        // so final result of the loop will be {"a=foo":{a:foo}, "b=bow":{b:bow}}
+        [Key in String.Split<QueryElement, "=">[0]]:
+            String.Split<QueryElement, "=">[1]
+    }
+}[QueryElements[number]] // try deleting this line '[QueryElements[number]]' and see what the result will look like (i.e QueryParams)
+
+so this last line of '[QueryElements[number]]' is us looping through the final object to create a union from the values of each key
+the final type result without the last line of '[QueryElements[number]]' would like this:
+    type QueryParams = {
+        "a=foo": {
+            a: "foo";
+        };
+        "b=bow": {
+            b: "bow";
+        };
+    }
+But with the with last line of '[QueryElements[number]]' which will loop through the object based on the keys
+    type QueryParams = {
+        a: "foo";
+    } | {
+        b: "bow";
+    }
 */
+
 
 const obj: Union.Merge<QueryParams> = {
     a: "foo",
     b: "bow"
 }
-console.log(obj)
+
+// trying the line below, i see no need to do Union.Merge above like the teacher did
+const obj_2:QueryParams = {a:'foo', b:'bow'};
+
+console.log(obj, obj_2)
