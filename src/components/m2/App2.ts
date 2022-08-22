@@ -19,7 +19,6 @@ const obj = {
 const value = getDeepValue(obj, "foo", "b")
 console.log(value)
 
-
 /**
 solution 1: So generics to the rescue of this problem, un-comment the return lines to see errors
 */
@@ -28,8 +27,8 @@ export const getDeepValue_1 = <TObj>(obj:TObj, firstKey:string, secondKey:string
 }
 
 /**
-So now, typescript is complaining that it cannot access an unknown object since it doesn't know what type of value of whatever we have passed in,
-first it doesn't know we even passed in an object... so take a look at the near final solution
+So now, typescript is complaining that it cannot access an unknown object since it doesn't know what type of the values of whatever we have passed in,
+first, it doesn't know we even passed in an object... so take a look at the near final solution
 solution 2: un-comment the return lines to see errors
 */
 export const getDeepValue_2 = <TObj>(
@@ -67,7 +66,7 @@ Please note that --keyof-- is almost like a .map() function, but instead of retu
 You can also do --TObj extends object-- just to be sure that TObj is always an object
 
 Explanation of 'TSecondKey extends keyof TObj[TFirstKey]':
-you know that 'TFirstKey' is a union of 'TObj', so doing TObj[TFirstKey] will cause automatically loop through the values of each object inside the 'TFirstKey'
+you know that 'TFirstKey' is a union of 'TObj', so doing 'keyof TObj[TFirstKey]' will automatically loop through the values of each object inside the 'TFirstKey'
 */
 
 
@@ -84,7 +83,8 @@ export type LettersAsUnion = keyof Letters;
 // the below can only be either 'a', 'b', or 'c'
 // LettersAsUnion could also be = 'a' | 'b' | 'c'
 export const letter: LettersAsUnion = 'a'
-export const letter_1: LettersAsUnion = 'b' // cannot be 
+export const letter_1: LettersAsUnion = 'b'
 
-// but letter2 cannot be 'a', 'b', or 'c', because it is not a keyof Letters
-export const letter2: Letters = {'a':'me', 'b':'me', 'c':'me'}
+// but letter2 cannot be 'a', 'b', or 'c', because it is not a keyof Letters, uncomment to see error
+// export const letter2: LettersAsUnion = 'ab'
+export const letter3: Letters = {'a':'me', 'b':'me', 'c':'me'}
