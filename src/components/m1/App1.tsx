@@ -26,7 +26,6 @@ export const Component = () => {
     )
 }
 
-
 //** Solution
 interface TableProps2<anyItem> {
     items: anyItem[];
@@ -49,6 +48,10 @@ export const Component2 = () => {
             ></Table2>
             <Table2
                 items={[{id:'1', name:'justin', type:'pet'}, {id:'1', name:'lucy', type:'pet'}]}
+                renderItems={(dts) => {return null}}
+            ></Table2>
+            <Table2
+                items={['stanley', 'daniel', 'elizabeth']}
                 renderItems={(dts) => {return null}}
             ></Table2>
         </>
