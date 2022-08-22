@@ -2,6 +2,9 @@
 this section is about how we can also do --if else statements-- with typescript
 so here is the problem:
 if the generic called 'TType' is an animal, let us return and object with keys and types representing an animal attributes, same goes for humans.
+e.g if TType is an animal, return legs, has_tail, age
+if TType is human, return bankAccount, SocialSecurityNumber, age
+Assignment, since both of them has age parameters - used & to return {age:number}
 */
 type Animal = {
     name: string
@@ -13,11 +16,12 @@ type Human = {
     lastName: string
 }
 
-// just take --GetRequiredInformation-- as a function and --TType-- is the argument
+/**
+    just take --GetRequiredInformation-- as a function and --TType-- is the argument
+    if you hover over the answers of '' and '', you'll see that their return types are 'any'.. this is because 'GetRequiredInformation' returns any regardless of what TType is
+*/
 type GetRequiredInformation<TType> = any
-
 export type RequiredInformationForAnimal = GetRequiredInformation<Animal>
-
 export type RequiredInformationForHuman = GetRequiredInformation<Human>
 
 
@@ -44,9 +48,7 @@ if extends animals, return age. else if it extends Human, return socialSecurityN
 type GetRequiredInformation_2<TType> = TType extends Animal
     ? {age:number}
     : TType extends Human
-    ? {
-        socialSecurityNumber: number
-    }
+    ? { socialSecurityNumber: number }
     : never
 
 export type RequiredInformationForAnimal_2 = GetRequiredInformation_2<Animal>
@@ -60,8 +62,8 @@ export type RequiredInformationForAlien_2 = GetRequiredInformation_2<{
 
 
 /**
-we can also do:
 if we wanted our guy to accept Aliens
+we can also do:
 */
 type GetRequiredInformation_3<TType> = TType extends Animal
     ? {age:number}
