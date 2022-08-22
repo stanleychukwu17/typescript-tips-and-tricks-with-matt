@@ -26,7 +26,7 @@ fetch('/someApi')
     })
 
 
-// we can also do the above like :
+// we can also do the above like:
 interface DataFromApi {
     id: string;
     name: string;
@@ -37,3 +37,5 @@ fetch('/someApi')
         const data = res
         console.log(data, data.id, data.name)        
     })
+
+// For me the above is much simpler and cleaner
