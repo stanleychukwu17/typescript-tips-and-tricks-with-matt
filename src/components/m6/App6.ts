@@ -29,14 +29,25 @@ type is an array
 
 i was revising the code and decided to explain every line of the type QueryParams
 type QueryParams = {
-    [QueryElement in QueryElements[number]]: { // for each loop of 'QueryElements[number]', 'QueryElement' will be = "a=foo", "b=bow"
+    [QueryElement in QueryElements[number]]: { // for each loop of 'QueryElements[number]', 'QueryElement' will be = "a=foo", "b=bow", resulting to "a=foo":{a:foo}
         // so final result of the loop will be {"a=foo":{a:foo}, "b=bow":{b:bow}}
         [Key in String.Split<QueryElement, "=">[0]]:
             String.Split<QueryElement, "=">[1]
     }
 }[QueryElements[number]] // try deleting this line '[QueryElements[number]]' and see what the result will look like (i.e QueryParams)
 
-so this last line of '[QueryElements[number]]' is us looping through the final object to create a union from the values of each key
+so this last line of '[QueryElements[number]]' is us looping through the final object to create a union from the values of each key.
+no that QueryElements = ["a=foo", "b=bow"], so you can substitute the above for 
+type QueryParams = {
+    "a=foo": {
+        a: "foo";
+    };
+    "b=bow": {
+        b: "bow";
+    };
+}["a=foo", "b=bow"]
+So hopefully you understand what's going on with the loop
+
 the final type result without the last line of '[QueryElements[number]]' would like this:
     type QueryParams = {
         "a=foo": {
