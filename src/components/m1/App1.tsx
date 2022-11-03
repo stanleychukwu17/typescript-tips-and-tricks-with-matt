@@ -34,7 +34,7 @@ interface TableProps2<anyItem> {
 
 // without the ,(comma) after the anyItem, typeScript would throw an error, also you can call anyItem any names you want e.g you can change the name to box and there would be no errors
 export const Table2 = <anyItem,>(props: TableProps2<anyItem>) => {
-    return <>Hi</>
+    return <div>Hi</div>
 }
 
 // so now, if you hover over the each of 'dts' argument passed into the renderItems functions, you'll see that 'dts' has all the values of whatever the items object received
