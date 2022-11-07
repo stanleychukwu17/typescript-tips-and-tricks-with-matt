@@ -60,7 +60,7 @@ export const getDeepValue_4 = <TObj, TFirstKey extends keyof TObj, TSecondKey ex
 /**
 --keyof-- can be used to extract the keys of any object, 
 so hopefully you understand what we've done here.. otherWise head over to the youtube video and watch the full video to see the teacher explain
-so this is all about using some extensions provided by typescript to solve some common problems.. in this case, how do we access an object
+so this is all about using some methods provided by typescript to solve some common problems.. in this case, how do we access an object
 when we are not sure of what the keys and values of this object would be.. generics to the rescue..
 Please note that --keyof-- is almost like a .map() function, but instead of returning an array, it loops through an object and returns the keys as a union.
 You can also do --TObj extends object-- just to be sure that TObj is always an object
@@ -71,7 +71,7 @@ you know that 'TFirstKey' is a union of 'TObj', so doing 'keyof TObj[TFirstKey]'
 
 
 
-// another small example of using of keyOff
+// another small example of using keyOff
 interface Letters {
     a: string;
     b: string;
@@ -81,10 +81,12 @@ interface Letters {
 export type LettersAsUnion = keyof Letters;
 
 // the below can only be either 'a', 'b', or 'c'
-// LettersAsUnion could also be = 'a' | 'b' | 'c'
+// LettersAsUnion could also be written as:: export type LettersAsUnion = 'a' | 'b' | 'c'
 export const letter: LettersAsUnion = 'a'
 export const letter_1: LettersAsUnion = 'b'
 
 // but letter2 cannot be 'a', 'b', or 'c', because it is not a keyof Letters, uncomment to see error
 // export const letter2: LettersAsUnion = 'ab'
 export const letter3: Letters = {'a':'me', 'b':'me', 'c':'me'}
+export const letter5: Partial<Letters> = {'a':'me', 'b':'me'}
+export const letter4: Omit<Letters, 'c'|'b'> = {'a':'me'}

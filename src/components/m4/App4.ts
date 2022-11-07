@@ -1,9 +1,9 @@
 /**
 this section is about how we can also do --if else statements-- with typescript
 so here is the problem:
-if the generic called 'TType' is an animal, let us return and object with keys and types representing an animal attributes, same goes for humans.
-e.g if TType is an animal, return legs, has_tail, age
-if TType is human, return bankAccount, SocialSecurityNumber, age
+if the generic called 'TType' is an animal, let us return an object with keys and types representing an animal attributes, same goes for humans.
+e.g if TType is an animal, return totalLegs:number, has_tail:boolean, age:number
+if TType is human, return bankAccount:number, SocialSecurityNumber:string, age:number, isAlive:boolean
 Assignment, since both of them has age parameters - used & to return {age:number}
 */
 type Animal = {
@@ -73,7 +73,7 @@ type GetRequiredInformation_3<TType> = TType extends Animal
     } : TType extends {planet:string}
     ? TType & {
         LordOfThisPlanet: 'Jehovah',
-        whatDoYouWant: string,
+        whatDoYouWantFromThisPlanet: string,
         HowLongAreYouStaying: string
     }
     : never
@@ -103,7 +103,7 @@ type Human_1 = {
 // just take --GetRequiredInformation-- as a function and --TType-- is the argument
 type GetRequiredInformation_7<TType> = TType extends Animal_1
     ? Creator & Animal_1 & {'HasTail':boolean, 'Legs':number}
-    : Creator & Human_1 & {'color':'white'|'black', 'socialSecurity':number, 'gender':string}
+    : Creator & Human_1 & {'color':'white'|'black', 'socialSecurity':number, 'gender':'male'|'female'}
 
 export type RequiredInformationForAnimal_7 = GetRequiredInformation_7<Animal_1>
 

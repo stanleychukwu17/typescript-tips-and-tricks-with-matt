@@ -11,15 +11,15 @@ type textOwnProps<E extends React.ElementType> = {
 // instead of using the one below(i.e textProps), using the next one 'textProps2'
 // type textProps<T extends React.ElementType> = textOwnProps<T> & React.ComponentProps<T>
 
+// React.ComponentProps are all the props that ReactElement type can receive, so extending it to our generic means our generic can receive all the properties that a react component prop can receive
 // to avoid name collision from our textOwnProps and React.ComponentProps, we will use the Omit to omit the names already specified in TextOwnProps, at-least we know that if any other ones does not collide, the 'children' names will collide
 type textProps2<T extends React.ElementType> = textOwnProps<T> &
     Omit<React.ComponentProps<T>, keyof textOwnProps<T>>
 
-export default function TextComp<Z extends React.ElementType = 'div'>({children, as}: textProps2<Z>) {
+export default function TextComp<Z extends React.ElementType = 'div'>({children, as, size, color}: textProps2<Z>) {
     const Component = as || 'div'
 
     return (
         <Component>{children}</Component>
-
     )
 }

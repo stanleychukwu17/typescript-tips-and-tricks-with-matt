@@ -28,7 +28,7 @@ export const deepEqualCompare_1 = <Arg>(
 
 // see different use cases, un-comment to see errors
 const c1 = deepEqualCompare_1('a', 'b')
-const c2 = deepEqualCompare_1<string>('a', 'b')
+const c2 = deepEqualCompare_1<number>(5, 9)
 console.log(c1, c2)
 // const c3 = deepEqualCompare_1<number>('a', 'b') // this will give you an error, because you've set the generic to a number but you're passing in string as an argument
 // const c4 = deepEqualCompare_1<[]>('a', 'b')

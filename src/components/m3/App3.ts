@@ -12,7 +12,7 @@ const Data = z.object({
     name: z.string()
 })
 
-// export the data type, just in case we wanted to use it in other projects, also <typeof > is a function in typescript that returns the type of an object, component, function e.t.c
+// export the data type, just in case we wanted to use it in other projects, also <typeof > is a method in typescript that returns the type of an object, component, function e.t.c
 export type DataType = z.infer<typeof Data>
 
 fetch('/someApi')
@@ -38,4 +38,4 @@ fetch('/someApi')
         console.log(data, data.id, data.name)        
     })
 
-// For me the above is much simpler and cleaner
+// For me the above is much simpler and cleaner abd uses no external packages
