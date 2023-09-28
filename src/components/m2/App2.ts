@@ -88,5 +88,5 @@ export const letter_1: LettersAsUnion = 'b'
 // but letter2 cannot be 'a', 'b', or 'c', because it is not a keyof Letters, uncomment to see error
 // export const letter2: LettersAsUnion = 'ab'
 export const letter3: Letters = {'a':'me', 'b':'me', 'c':'me'}
-export const letter5: Partial<Letters> = {'a':'me', 'b':'me'}
-export const letter4: Omit<Letters, 'c'|'b'> = {'a':'me'}
+export const letter4: Partial<Letters> = {'a':'me', 'b':'me'}
+export const letter5: Omit<Letters, 'c'|'b'> = {'a':'me'}

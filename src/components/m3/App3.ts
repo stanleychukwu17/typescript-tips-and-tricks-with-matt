@@ -9,7 +9,8 @@ import {z} from 'zod'
 // the data structure we're expecting from the API
 const Data = z.object({
     id: z.string(),
-    name: z.string()
+    name: z.string(),
+    city: z.string()
 })
 
 // export the data type, just in case we wanted to use it in other projects, also <typeof > is a method in typescript that returns the type of an object, component, function e.t.c
@@ -33,9 +34,9 @@ interface DataFromApi {
 }
 fetch('/someApi')
     .then(res => res.json())
-    .then((res: DataFromApi )=> {
+    .then((res: DataFromApi)=> {
         const data = res
         console.log(data, data.id, data.name)        
     })
 
-// For me the above is much simpler and cleaner abd uses no external packages
+// For me the above is much simpler and cleaner and uses no external packages
